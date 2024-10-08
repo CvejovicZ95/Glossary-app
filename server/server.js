@@ -4,6 +4,8 @@ import dotenv from 'dotenv'
 
 import { connect } from './src/db/connectDB.js'
 
+import { glosarryRouter } from './src/routes/glossaryRoutes.js'
+
 const app = express()
 dotenv.config()
 
@@ -17,6 +19,8 @@ const corsOptions = {
 
 app.use(express.json())
 app.use(cors(corsOptions))
+
+app.use('/api', glosarryRouter)
 
 app.listen(PORT, () => {
   connect()
