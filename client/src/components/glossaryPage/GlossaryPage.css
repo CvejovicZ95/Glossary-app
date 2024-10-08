@@ -9,6 +9,22 @@ a{
     text-decoration: none;
 }
 
+.logout-button{
+    float: right;
+    padding: 10px 10px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #007bff;
+}
+
+.logout-button:hover{
+    background-color: #0056b3; 
+}
+
 .glossary-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -96,7 +112,8 @@ a{
 .glossary-term {
     font-weight: bold;
     color: #333;
-    flex: 1; 
+    flex: 1;
+    max-width: 200px;
 }
 
 .glossary-definition {
@@ -150,6 +167,12 @@ a{
         font-size: 1.5em; 
     }
 
+    .logout-button{
+       float: none;
+       display: block;
+       margin: 20px auto;
+    }
+
     .glossary-search-input {
         font-size: 1em; 
     }
@@ -168,6 +191,7 @@ a{
         flex: none; 
         width: 100%; 
         text-align: center;
+        max-width: none;
     }
 
     .glossary-actions {
@@ -181,6 +205,12 @@ a{
 @media (min-width: 577px) and (max-width: 768px) {
     .glossary-title {
         font-size: 2.2em; 
+    }
+
+    .logout-button{
+       float: none;
+       display: block;
+       margin: 20px auto;
     }
 
     .glossary-search-input {
@@ -214,6 +244,9 @@ a{
         font-size: 2.5em; 
     }
 
+    .logout-button{
+       
+    }
     .glossary-search-input {
         font-size: 1.2em; 
         width: 90%;

@@ -13,7 +13,7 @@ export const getTerms = async () => {
     }
 }
 
-export const createTerm = async (term, definition, deleted) => {
+export const createTerm = async (term, definition, deleted, userId) => {
     try {
         const response = await fetch(`${apiUrl}/api/terms`, {
             method: "POST",
@@ -24,6 +24,7 @@ export const createTerm = async (term, definition, deleted) => {
                 term,
                 definition,
                 deleted,
+                userId
             }),
         });
         const data = await response.json();

@@ -5,13 +5,17 @@ import { useTerms } from '../../hooks/useGlossary';
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuthContext } from '../../context/authContext';
+import { useLogoutUser } from '../../hooks/useUsers';
+import { CiLogout } from "react-icons/ci";
 
 export const GlossaryPage = () => {
     const { allTerms, deleteTermHandler } = useTerms();
+    const { authUser } = useAuthContext(); 
+    const { logoutHandler } = useLogoutUser();
     const [searchTerm, setSearchTerm] = useState("");
 
     const sortedTerms = allTerms.sort((a, b) => a.term.localeCompare(b.term));
-
     const filteredTerms = sortedTerms.filter(item => 
         item.term.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -29,14 +33,21 @@ export const GlossaryPage = () => {
 
     return (
         <div className="glossary-container">
-            <h1 className="glossary-title">Glossary Application</h1>
-            <input 
-                type="text" 
-                placeholder="Search for a term..." 
-                className="glossary-search-input"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-            />
+            <h1 className="glossary-title">Welcome {authUser.username} to Glossary Application</h1>
+            <div className='search-and-logout'>
+                {authUser && (
+                    <button className='logout-button' onClick={logoutHandler}>
+                        <CiLogout/>
+                    </button>
+                )}
+                <input 
+                    type="text" 
+                    placeholder="Search for a term..." 
+                    className="glossary-search-input"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+            </div>
             <div className="button-container">
                 <Link to={'/newTerm'}>
                     <button className='add-term'>Add new Term</button>
@@ -53,8 +64,14 @@ export const GlossaryPage = () => {
                         <h3 className="glossary-term">{item.term}</h3>
                         <p className="glossary-definition">{item.definition}</p>
                         <div className="glossary-actions">
-                            <Link to={`/editTerm/${item._id}`}><button className="glossary-button-update">Update</button></Link>
-                            <button onClick={() => handleDeleteTerm(item._id)} className="glossary-button-delete">Delete</button>
+                            {authUser && authUser.id === item.author.user && (
+                                <>
+                                    <Link to={`/editTerm/${item._id}`}>
+                                        <button className="glossary-button-update">Update</button>
+                                    </Link>
+                                    <button onClick={() => handleDeleteTerm(item._id)} className="glossary-button-delete">Delete</button>
+                                </>
+                            )}
                         </div>
                     </article>
                 ))}

@@ -4,14 +4,18 @@ import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { useLoginUser } from "../../hooks/useUsers";
 import "react-toastify/dist/ReactToastify.css";
 
 export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const { loginHandler } = useLoginUser();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    await loginHandler(username, password);
   };
 
   return (
@@ -46,7 +50,7 @@ export const Login = () => {
           <button type="submit" className="login-button">Login</button>
         </form>
         <span className="register-link">
-          Don`t have an account? <Link to="/register">Register here!</Link>
+          Don’t have an account? <Link to="/register">Register here!</Link>
         </span>
       </div>
       <ToastContainer />

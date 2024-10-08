@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { getTerms, deleteTerm, createTerm, updateTerm } from "../api/glossaryApi";
+import { useAuthContext } from '../context/authContext';
 
 export const useTerms = () => {
     const [allTerms, setAllTerms] = useState([]);
+    const { authUser } = useAuthContext();
 
     useEffect(() => {
         const fetchTerms = async () => {
@@ -35,13 +37,14 @@ export const useTerms = () => {
             return;
         }
         try {
-            const newTerm = await createTerm(term, definition, deleted);
+            const newTerm = await createTerm(term, definition, deleted, authUser.id);
             setAllTerms((prevTerms) => [...prevTerms, newTerm]);
             toast.success('Term added successfully!');
         } catch (error) {
             toast.error(error.message);
         }
     };
+    
 
     const updateTermHandler = async (id, updatedTerm, updatedDefinition, updatedDeleted) => {
         try {

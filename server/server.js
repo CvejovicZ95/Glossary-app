@@ -6,6 +6,7 @@ import { connect } from './src/db/connectDB.js'
 
 import { glosarryRouter } from './src/routes/glossaryRoutes.js'
 import { userRouter } from './src/routes/usersRoutes.js'
+import { tokenRouter } from './src/routes/tokenRoutes.js'
 
 const app = express()
 dotenv.config()
@@ -23,6 +24,7 @@ app.use(cors(corsOptions))
 
 app.use('/api', glosarryRouter)
 app.use('/api', userRouter)
+app.use('/api', tokenRouter)
 
 app.listen(PORT, () => {
   connect()

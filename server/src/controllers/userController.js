@@ -65,6 +65,7 @@ export const loginUser = async (req, res) => {
       res.status(200).json({
         token,
         username: user.username,
+        id:user._id
       })
     } catch (error) {
       logger.error('Error in loginUser controller', error.message)
