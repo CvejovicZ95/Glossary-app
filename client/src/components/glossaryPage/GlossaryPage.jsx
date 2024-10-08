@@ -1,5 +1,6 @@
 import React from 'react';
 import "./GlossaryPage.css";
+import { Link } from 'react-router-dom'
 
 export const GlossaryPage = () => {
     const glossaryTerms = [
@@ -20,7 +21,11 @@ export const GlossaryPage = () => {
                 placeholder="Search for a term..." 
                 className="glossary-search-input"
             />
-
+            <div className="button-container">
+                <Link to={'/newTerm'}>
+                    <button className='add-term'>Add new Term</button>
+                </Link>
+             </div>
             <div className="glossary-header">
                 <h2 className="glossary-term-title">Term</h2>
                 <h2 className="glossary-definition-title">Definition</h2>
@@ -32,13 +37,13 @@ export const GlossaryPage = () => {
                         <h3 className="glossary-term">{item.term}</h3>
                         <p className="glossary-definition">{item.definition}</p>
                         <div className="glossary-actions">
-                            <button className="glossary-button-update">Update</button>
+                            <Link to={'/editTerm'}><button className="glossary-button-update">Update</button></Link>
                             <button className="glossary-button-delete">Delete</button>
                         </div>
                     </article>
                 ))}
             </div>
-            
+
         </div>
     );
 };
