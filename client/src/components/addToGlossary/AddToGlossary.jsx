@@ -24,11 +24,12 @@ export const AddToGlossary = () => {
 
     return (
         <>
-            <h1>Add New Term</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="term">Term:</label>
+            <h1 className="add-term-title">Add New Term</h1>
+            <form className="add-term-form" onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label className="form-label" htmlFor="term">Term:</label>
                     <input
+                        className="form-input"
                         type="text"
                         id="term"
                         value={term}
@@ -36,9 +37,10 @@ export const AddToGlossary = () => {
                         required
                     />
                 </div>
-                <div>
-                    <label htmlFor="definition">Definition:</label>
+                <div className="form-group">
+                    <label className="form-label" htmlFor="definition">Definition:</label>
                     <textarea
+                        className="form-textarea"
                         id="definition"
                         value={definition}
                         onChange={(e) => setDefinition(e.target.value)}
@@ -48,7 +50,7 @@ export const AddToGlossary = () => {
                 <button className="add-term" type="submit">Add Term</button>
             </form>
             <div className="back-div-button">
-                <Link to={"/"}>
+                <Link to={"/glossary"}>
                     <button className="back-to-main-button">
                         <IoArrowBackCircleSharp />
                     </button>

@@ -1,4 +1,5 @@
 import { Glossary } from "../models/glossarySchema.js";
+import { User } from "../models/usersSchema.js";
 import { logger } from "../../logger.js";
 
 export const getAllTermsFromGlossary = async () => {
@@ -11,21 +12,28 @@ export const getAllTermsFromGlossary = async () => {
     }
 }
 
-
-export const addTermToGlossary = async (term, definition) => {
+export const addTermToGlossary = async (term, definition, userId) => {
     try {
-        const newTerm = new Glossary({ term, definition })
-        await newTerm.save()
+        const newTerm = new Glossary({ 
+            term, 
+            definition, 
+            author: { user: userId } 
+        });
+        await newTerm.save();
 
-        logger.info('New term added successfully')
-        return newTerm
+        await User.findByIdAndUpdate(
+            userId, 
+            { $push: { terms: newTerm._id } },
+            { new: true }
+        );
+
+        logger.info('New term added successfully');
+        return newTerm;
     } catch (error) {
         logger.error('Error adding term to glossary', { message: error.message, stack: error.stack });
-
-        throw new Error('Error adding term to glossary')
+        throw new Error('Error adding term to glossary');
     }
-}
-
+};
 export const updateTermInGlossary = async (termId, newData) => {
     try {
         const updatedTerm = await Glossary.findByIdAndUpdate(termId, newData, {

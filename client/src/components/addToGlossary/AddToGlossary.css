@@ -1,5 +1,5 @@
-form {
-    max-width: 800px; 
+.add-term-form {
+    width: 500px; 
     margin: 0 auto; 
     padding: 20px; 
     background-color: #f9f9f9; 
@@ -8,31 +8,34 @@ form {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
-h1 {
+.add-term-title {
     text-align: center; 
     color: #333; 
     margin-bottom: 20px; 
 }
 
-label {
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
     display: block; 
     margin-bottom: 8px; 
     font-weight: bold; 
 }
 
-input[type="text"],
-textarea {
+.form-input,
+.form-textarea {
     width: 95%; 
     padding: 10px;
     border: 2px solid #ddd; 
     border-radius: 5px; 
     font-size: 1rem; 
-    margin-bottom: 15px;
     transition: border-color 0.3s; 
 }
 
-input[type="text"]:focus,
-textarea:focus {
+.form-input:focus,
+.form-textarea:focus {
     border-color: #007bff; 
     outline: none; 
 }
@@ -48,18 +51,6 @@ textarea:focus {
     transition: background-color 0.3s; 
 }
 
-@media (max-width: 600px) {
-form{
-    width: 70%;
-
-}    
-.add-term {
-    display: block;
-    margin: 20px auto; 
-    width: 80%; 
-    }
-}
-
 .add-term:hover {
     background-color: #218838;
 }
@@ -71,7 +62,7 @@ form{
 
 .back-to-main-button { 
     font-size: 2rem; 
-    padding: 12px 15px 5px 15px ;
+    padding: 12px 15px; 
     background-color: #007bff;
     border: none; 
     border-radius: 5px;
@@ -82,4 +73,15 @@ form{
 
 .back-to-main-button:hover {
     background-color: #0056b3; 
+}
+
+@media (max-width: 600px) {
+    .add-term-form {
+        width: 70%;
+    }    
+    .add-term {
+        display: block;
+        margin: 20px auto; 
+        width: 80%; 
+    }
 }

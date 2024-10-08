@@ -11,8 +11,9 @@ export const getAllTermsController = async (req, res) => {
 
 export const addTermController = async (req, res) => {
     try {
-        const { term, definition } = req.body
-        const newTerm = await addTermToGlossary(term, definition)
+        const { term, definition, userId } = req.body
+        const newTerm = await addTermToGlossary(term, definition, userId)
+
         res.status(201).json(newTerm)
     } catch (error) {
         res.status(500).json({ error: 'Server error'})

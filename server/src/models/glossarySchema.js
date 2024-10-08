@@ -13,6 +13,13 @@ const glossarySchema = new mongoose.Schema({
   deleted: {
     type: Boolean,
     default: false
+  },
+  author: {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    },
   }
 }, {
   timestamps: {

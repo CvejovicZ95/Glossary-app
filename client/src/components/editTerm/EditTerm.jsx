@@ -58,7 +58,7 @@ export const EditTerm = () => {
                 </form>
             </div>
             <div className="back-div-button">
-                <Link to={"/"}>
+                <Link to={"/glossary"}>
                     <button className="back-to-main-button">
                         <IoArrowBackCircleSharp />
                     </button>

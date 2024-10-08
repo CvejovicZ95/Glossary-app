@@ -1,0 +1,87 @@
+a {
+    color: black;
+}
+
+.register-page-container {
+    background-image: url("../../../assets/images/glosary.jpg"); 
+    background-size: cover; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.register-page {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 600px; 
+    width: 100%; 
+    color: #fff;
+    text-align: center; 
+    animation: fadeIn 1s ease-in-out; 
+}
+
+.register-title {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.5rem; 
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; 
+    width: 100%; 
+}
+
+.input {
+    width: 100%; 
+    padding: 12px; 
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-left: 10px; 
+    transition: border-color 0.3s;
+}
+
+.input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.register-button {
+    padding: 12px 15px; 
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #28a745;
+    transition: background-color 0.3s;
+    width: 100%; 
+}
+
+.register-button:hover {
+    background-color: #218838;
+}
+
+.login-link {
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .register-page-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .register-button {
+        margin: 20px auto;
+        width: 100%;
+    }
+}
