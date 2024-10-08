@@ -11,7 +11,7 @@ function App() {
 
       <Route path="/newTerm" element={<AddToGlossary/>}/>
 
-      <Route path="/editTerm" element={<EditTerm/>}/>
+      <Route path="/editTerm/:id" element={<EditTerm/>}/>
 
     </Routes>
   );

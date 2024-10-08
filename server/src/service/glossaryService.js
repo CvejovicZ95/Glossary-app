@@ -6,7 +6,7 @@ export const getAllTermsFromGlossary = async () => {
         const allTerms = await Glossary.find({ deleted: false });
         return allTerms;
     } catch (error) {
-        logger.error('Error fetching data from glossary', error.message);
+        logger.error('Error adding term to glossary', { message: error.message, stack: error.stack });
         throw new Error('Error fetching data');
     }
 }
@@ -20,7 +20,8 @@ export const addTermToGlossary = async (term, definition) => {
         logger.info('New term added successfully')
         return newTerm
     } catch (error) {
-        logger.error('Error adding term to glossary', error.mesasge)
+        logger.error('Error adding term to glossary', { message: error.message, stack: error.stack });
+
         throw new Error('Error adding term to glossary')
     }
 }
@@ -36,7 +37,7 @@ export const updateTermInGlossary = async (termId, newData) => {
             logger.info('Term updated successfully', updatedTerm._id)
             return updatedTerm
     } catch (error) {
-        logger.error('Error updating term', error.message)
+        logger.error('Error adding term to glossary', { message: error.message, stack: error.stack });
         throw new Error('Error updating term')
     }
 }
@@ -54,7 +55,7 @@ export const deleteTermFromGlossary = async (id) => {
         }
         logger.info('Term marked as deleted', deletedTerm._id);
     } catch (error) {
-        logger.error('Error deleting term from glossary', error.message);
+        logger.error('Error adding term to glossary', { message: error.message, stack: error.stack });
         throw new Error('Error deleting term from glossary');
     }
 }

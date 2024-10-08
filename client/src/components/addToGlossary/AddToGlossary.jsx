@@ -1,16 +1,25 @@
 import React, { useState } from "react";
-import "./AddToGlossary.css"
+import "./AddToGlossary.css";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useTerms } from "../../hooks/useGlossary";
 
 export const AddToGlossary = () => {
+    const { createTermHandler } = useTerms();
+    const navigate = useNavigate();
     const [term, setTerm] = useState("");
     const [definition, setDefinition] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setTerm("");
-        setDefinition("");
+        try {
+            await createTermHandler({ term, definition, deleted: false });
+            setTerm("");
+            setDefinition("");
+            navigate("/");
+        } catch (error) {
+            console.error("Error during form submission:", error);
+        }
     };
 
     return (
@@ -39,7 +48,11 @@ export const AddToGlossary = () => {
                 <button className="add-term" type="submit">Add Term</button>
             </form>
             <div className="back-div-button">
-                <Link to={"/"}><button className="back-to-main-button"><IoArrowBackCircleSharp/></button></Link>
+                <Link to={"/"}>
+                    <button className="back-to-main-button">
+                        <IoArrowBackCircleSharp />
+                    </button>
+                </Link>
             </div>
         </>
     );
