@@ -1,9 +1,9 @@
-
+import { GlossaryPage } from "./components/glossaryPage/GlossaryPage";
 
 function App() {
   return (
     <div className="App">
-      <h1>Start</h1>
+      <GlossaryPage/>
     </div>
   );
 }
