@@ -3,6 +3,8 @@ import "./AddToGlossary.css";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { useTerms } from "../../hooks/useGlossary";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const AddToGlossary = () => {
     const { createTermHandler } = useTerms();
@@ -12,13 +14,11 @@ export const AddToGlossary = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            await createTermHandler({ term, definition, deleted: false });
+        const success = await createTermHandler({ term, definition, deleted: false });
+        if (success) {
             setTerm("");
             setDefinition("");
             navigate("/");
-        } catch (error) {
-            console.error("Error during form submission:", error);
         }
     };
 
@@ -34,7 +34,6 @@ export const AddToGlossary = () => {
                         id="term"
                         value={term}
                         onChange={(e) => setTerm(e.target.value)}
-                        required
                     />
                 </div>
                 <div className="form-group">
@@ -44,7 +43,6 @@ export const AddToGlossary = () => {
                         id="definition"
                         value={definition}
                         onChange={(e) => setDefinition(e.target.value)}
-                        required
                     ></textarea>
                 </div>
                 <button className="add-term" type="submit">Add Term</button>
@@ -56,6 +54,7 @@ export const AddToGlossary = () => {
                     </button>
                 </Link>
             </div>
+            <ToastContainer/>
         </>
     );
 };

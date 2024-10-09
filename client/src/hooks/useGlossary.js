@@ -31,30 +31,56 @@ export const useTerms = () => {
         }
     };
 
-    const createTermHandler = async ({ term, definition, deleted }) => {
+    const validateInput = (term, definition) => {
         if (!term || !definition) {
             toast.error('Term and definition cannot be empty');
-            return;
+            return false;
         }
+        
+        if (term.length < 3) {
+            toast.error('Term must be at least 3 characters long');
+            return false; 
+        }
+        
+        if (definition.length < 15) {
+            toast.error('Definition must be at least 15 characters long');
+            return false; 
+        }
+
+        return true;
+    };
+
+    const createTermHandler = async ({ term, definition, deleted }) => {
+        if (!validateInput(term, definition)) {
+            return false;
+        }
+
         try {
             const newTerm = await createTerm(term, definition, deleted, authUser._id);
             setAllTerms((prevTerms) => [...prevTerms, newTerm]);
             toast.success('Term added successfully!');
+            return true; 
         } catch (error) {
             toast.error(error.message);
+            return false; 
         }
     };
-    
 
     const updateTermHandler = async (id, updatedTerm, updatedDefinition, updatedDeleted) => {
+        if (!validateInput(updatedTerm, updatedDefinition)) {
+            return false;
+        }
+
         try {
             const updated = await updateTerm(id, updatedTerm, updatedDefinition, updatedDeleted);
             setAllTerms((prevTerms) =>
                 prevTerms.map((term) => (term._id === id ? updated : term))
             );
             toast.success('Term updated successfully!');
+            return true; 
         } catch (error) {
             toast.error(error.message);
+            return false; 
         }
     };
     

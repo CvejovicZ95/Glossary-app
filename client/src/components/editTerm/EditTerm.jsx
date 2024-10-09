@@ -3,7 +3,8 @@ import "./EditTerm.css";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { useTerms } from "../../hooks/useGlossary";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const EditTerm = () => {
     const { updateTermHandler, allTerms } = useTerms();
@@ -22,11 +23,10 @@ export const EditTerm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            await updateTermHandler(id, term, definition, false); 
+
+        const isValid = await updateTermHandler(id, term, definition, false);
+        if (isValid) {
             navigate("/");
-        } catch (error) {
-            toast.error(error.message);
         }
     };
 
@@ -64,6 +64,7 @@ export const EditTerm = () => {
                     </button>
                 </Link>
             </div>
+            <ToastContainer/>
         </>
     );
 };
