@@ -58,9 +58,9 @@ The Glossary App allows users to register and log in to their accounts. Users ca
 ## Environment Variables (Client Folder)
 
 - `REACT_APP_API_BASE_URL`: Base URL for API requests
-- .env.dev:For development environment.
-- .env.prod:For production environment.
-- .env.local:For local testing.
+- .env.dev :For development environment.
+- .env.prod :For production environment.
+- .env.local :For local testing.
 
 - **Server**:
   - `nodemon server`
