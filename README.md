@@ -43,6 +43,9 @@ The Glossary App allows users to register and log in to their accounts. Users ca
 - Install dependencies for both client and server:
 - cd server && npm install
 - cd client && npm install
+- config.json(server folder): This file should contain any additional configuration, such as:
+
+    secret_key: Your application’s secret key for signing tokens or other sensitive operations.
 
 ## Environment Variables (Server Folder)
 
@@ -54,10 +57,6 @@ The Glossary App allows users to register and log in to their accounts. Users ca
 - `MAILGUN_DOMAIN`: Mailgun domain
 - `MAILGUN_FROM`: Mailgun from address
 - `MAILGUN_HOST`: Mailgun host
-
-- config.json: This file should contain any additional configuration, such as:
-
-    secret_key: Your application’s secret key for signing tokens or other sensitive operations.
 
 ## Environment Variables (Client Folder)
 
