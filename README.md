@@ -55,6 +55,10 @@ The Glossary App allows users to register and log in to their accounts. Users ca
 - `MAILGUN_FROM`: Mailgun from address
 - `MAILGUN_HOST`: Mailgun host
 
+- config.json: This file should contain any additional configuration, such as:
+
+    secret_key: Your application’s secret key for signing tokens or other sensitive operations.
+
 ## Environment Variables (Client Folder)
 
 - `REACT_APP_API_BASE_URL`: Base URL for API requests
