@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 import PropTypes from "prop-types";
 
 export const AuthContext = createContext();
@@ -22,35 +22,11 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setAuthUser(null);
     localStorage.removeItem('currentUser');
-    document.cookie =
-      "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; secure; HttpOnly";
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; secure; HttpOnly";
   };
 
-  useEffect(() => {
-    const checkToken = async () => {
-      try {
-        const res = await fetch("/api/validateToken", {
-          credentials: "include",
-        });
-        if (res.ok) {
-          const data = await res.json();
-          setAuthUser(data.user);
-          localStorage.setItem('currentUser', JSON.stringify(data.user));
-        } else {
-          logout();
-        }
-      } catch (error) {
-        logout();
-      }
-    };
-
-    checkToken();
-  }, []);
-
   return (
-    <AuthContext.Provider
-      value={{ authUser, login, logout, setAuthUser }}
-    >
+    <AuthContext.Provider value={{ authUser, login, logout, setAuthUser }}>
       {children}
     </AuthContext.Provider>
   );
