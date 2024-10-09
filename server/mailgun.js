@@ -11,17 +11,17 @@ const mg = mailgun.client({
 })
 
 export const sendOrderConfirmation = async ({ email, details }) => {
-    try {
-      const response = await mg.messages.create(process.env.MAILGUN_DOMAIN, {
-        from: 'Glossary Application <no-reply@your-domain.com>',
-        to: email,
-        subject: 'Registration Confirmation',
-        text: 'Thank you for registering!',
-        html: details
-      })
-      return response
-    } catch (error) {
-      console.error('Error sending email:', error)
-      throw error
-    }
+  try {
+    const response = await mg.messages.create(process.env.MAILGUN_DOMAIN, {
+      from: 'Glossary Application <no-reply@your-domain.com>',
+      to: email,
+      subject: 'Registration Confirmation',
+      text: 'Thank you for registering!',
+      html: details
+    })
+    return response
+  } catch (error) {
+    console.error('Error sending email:', error)
+    throw error
+  }
 }

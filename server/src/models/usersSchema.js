@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Glossary',
     required: true
-  }],
+  }]
 }, {
   timestamps: {
     createdAt: 'created_at',

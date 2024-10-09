@@ -50,7 +50,7 @@ export const Login = () => {
           <button type="submit" className="login-button">Login</button>
         </form>
         <span className="register-link">
-          Don’t have an account? <Link to="/register">Register here!</Link>
+          Don`t have an account? <Link to="/register">Register here!</Link>
         </span>
       </div>
       <ToastContainer />

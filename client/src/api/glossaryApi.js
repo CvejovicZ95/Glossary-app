@@ -16,7 +16,8 @@ export const getTerms = async () => {
 export const createTerm = async (term, definition, deleted) => {
     try {
         const savedUser = localStorage.getItem('currentUser');
-        if (!savedUser) throw new Error('User is not logged in');
+            if (!savedUser) throw new Error('User is not logged in');
+
         const userData = JSON.parse(savedUser);
         const userId = userData.id;
 
@@ -49,7 +50,8 @@ export const createTerm = async (term, definition, deleted) => {
 export const deleteTerm = async (id) => {
     try {
         const savedUser = localStorage.getItem('currentUser');
-        if (!savedUser) throw new Error('User is not logged in');
+            if (!savedUser) throw new Error('User is not logged in');
+
         const userData = JSON.parse(savedUser);
         const token = userData.token; 
 
@@ -77,7 +79,8 @@ export const deleteTerm = async (id) => {
 export const updateTerm = async (id, updatedTerm, updatedDefinition, updatedDeleted) => {
     try {
         const savedUser = localStorage.getItem('currentUser');
-        if (!savedUser) throw new Error('User is not logged in');
+            if (!savedUser) throw new Error('User is not logged in');
+            
         const userData = JSON.parse(savedUser);
         const token = userData.token; 
 
