@@ -9,20 +9,21 @@ export const useAuthContext = () => {
 
 export const AuthProvider = ({ children }) => {
   const [authUser, setAuthUser] = useState(() => {
-    const savedUser = localStorage.getItem('currentUser');
+    const savedUser = localStorage.getItem("currentUser");
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
   const login = (userData) => {
     setAuthUser(userData);
-    localStorage.setItem('currentUser', JSON.stringify(userData));
+    localStorage.setItem("currentUser", JSON.stringify(userData));
     document.cookie = `token=${userData.token}; path=/; secure; HttpOnly`;
   };
 
   const logout = () => {
     setAuthUser(null);
-    localStorage.removeItem('currentUser');
-    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; secure; HttpOnly";
+    localStorage.removeItem("currentUser");
+    document.cookie =
+      "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; secure; HttpOnly";
   };
 
   return (

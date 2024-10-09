@@ -47,7 +47,9 @@ export const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit" className="login-button">Login</button>
+          <button type="submit" className="login-button">
+            Login
+          </button>
         </form>
         <span className="register-link">
           Don`t have an account? <Link to="/register">Register here!</Link>

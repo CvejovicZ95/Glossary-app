@@ -12,17 +12,30 @@ function App() {
 
   return (
     <Routes>
+      <Route
+        path="/"
+        element={authUser ? <Navigate to="/glossary" /> : <Login />}
+      />
 
-      <Route path="/" element={authUser ? <Navigate to="/glossary" /> : <Login />} />
+      <Route
+        path="/register"
+        element={authUser ? <Navigate to="/glossary" /> : <Register />}
+      />
 
-      <Route path="/register" element={authUser ? <Navigate to="/glossary" /> : <Register />} />
+      <Route
+        path="/glossary"
+        element={!authUser ? <Navigate to="/" /> : <GlossaryPage />}
+      />
 
-      <Route path="/glossary" element={!authUser ? <Navigate to="/" /> : <GlossaryPage />} />
+      <Route
+        path="/newTerm"
+        element={!authUser ? <Navigate to="/" /> : <AddToGlossary />}
+      />
 
-      <Route path="/newTerm" element={!authUser ? <Navigate to="/" /> : <AddToGlossary />} />
-
-      <Route path="/editTerm/:id" element={!authUser ? <Navigate to="/" /> : <EditTerm />} />
-      
+      <Route
+        path="/editTerm/:id"
+        element={!authUser ? <Navigate to="/" /> : <EditTerm />}
+      />
     </Routes>
   );
 }

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./Register.css"; 
+import "./Register.css";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
-import { useRegisterUser } from "../../hooks/useUsers"; 
+import { useRegisterUser } from "../../hooks/useUsers";
 import "react-toastify/dist/ReactToastify.css";
 
 export const Register = () => {
@@ -13,18 +13,18 @@ export const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const { registerHandler } = useRegisterUser(); 
+  const { registerHandler } = useRegisterUser();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-        toast.error("Passwords do not match");
-        return;
+      toast.error("Passwords do not match");
+      return;
     }
 
     await registerHandler(email, username, password);
-};
+  };
 
   return (
     <div className="register-page-container">
@@ -75,7 +75,9 @@ export const Register = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
-          <button type="submit" className="register-button">Create Account</button>
+          <button type="submit" className="register-button">
+            Create Account
+          </button>
         </form>
         <p className="login-link">
           Already have an account? <Link to="/">Login here!</Link>
