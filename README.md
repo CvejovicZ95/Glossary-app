@@ -16,7 +16,7 @@ The Glossary App allows users to register and log in to their accounts. Users ca
   - Login: Users can sign in to their accounts.
   - Logout: Users can sign out of their accounts.
 
-- **Post Management:**
+- **Term Management:**
 
   - Create Terms: Users can create posts with text, images, or a combination of both.
   - Edit/Delete Terms: Users can modify or remove their own terms.
