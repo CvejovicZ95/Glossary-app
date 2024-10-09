@@ -37,7 +37,7 @@ export const useTerms = () => {
             return;
         }
         try {
-            const newTerm = await createTerm(term, definition, deleted, authUser.id);
+            const newTerm = await createTerm(term, definition, deleted, authUser._id);
             setAllTerms((prevTerms) => [...prevTerms, newTerm]);
             toast.success('Term added successfully!');
         } catch (error) {

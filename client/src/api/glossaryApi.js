@@ -24,7 +24,7 @@ export const createTerm = async (term, definition, deleted, userId) => {
                 term,
                 definition,
                 deleted,
-                userId
+                author:userId
             }),
         });
         const data = await response.json();

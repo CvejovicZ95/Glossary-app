@@ -8,10 +8,10 @@ export const registerUser = async (req, res) => {
   try {
     const { email, username, password } = req.body;
 
-    const existingUser = await User.findOne({ email });
+    /*const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ error: 'Email is already taken' });
-    }
+    }*/
 
     const existingUsername = await User.findOne({ username });
     if (existingUsername) {

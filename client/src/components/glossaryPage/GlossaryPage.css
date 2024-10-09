@@ -122,6 +122,12 @@ a{
     font-size: 0.9rem;
 }
 
+.glossary-author{
+    font-size: 0.7rem;
+    margin-right: 15px;
+    text-align: center;
+}
+
 .glossary-list-item:hover {
     background-color: #f1f1f1;
     cursor: pointer;
@@ -194,6 +200,12 @@ a{
         max-width: none;
     }
 
+    .glossary-author{
+        margin: 10px auto;
+        text-align: center;
+    }
+    
+
     .glossary-actions {
         display: flex;
         justify-content: center;
@@ -233,6 +245,10 @@ a{
         width: 100%; 
     }
 
+    .glossary-author{
+        margin-left: 0;
+    }
+
     .glossary-actions {
         width: 100%;
         margin-top: 10px; 
@@ -244,9 +260,6 @@ a{
         font-size: 2.5em; 
     }
 
-    .logout-button{
-       
-    }
     .glossary-search-input {
         font-size: 1.2em; 
         width: 90%;

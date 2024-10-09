@@ -1,7 +1,6 @@
 import mongoose from 'mongoose'
 
 const glossarySchema = new mongoose.Schema({
-
   term: {
     type: String,
     required: true
@@ -15,11 +14,9 @@ const glossarySchema = new mongoose.Schema({
     default: false
   },
   author: {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true
-    },
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   }
 }, {
   timestamps: {

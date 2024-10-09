@@ -19,7 +19,7 @@ export const GlossaryPage = () => {
     const filteredTerms = sortedTerms.filter(item => 
         item.term.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
+    
     const handleDeleteTerm = async (termId) => {
         const confirmed = window.confirm("Are you sure?");
         if (confirmed) {
@@ -63,19 +63,21 @@ export const GlossaryPage = () => {
                     <article key={index} className="glossary-list-item">
                         <h3 className="glossary-term">{item.term}</h3>
                         <p className="glossary-definition">{item.definition}</p>
+                        <p className="glossary-author">Created by: {item.author.username}</p>
+
                         <div className="glossary-actions">
-                            {authUser && authUser.id === item.author.user && (
+                            {authUser && (authUser.username === 'Admin' || authUser.id === item.author._id) && (
                                 <>
-                                    <Link to={`/editTerm/${item._id}`}>
-                                        <button className="glossary-button-update">Update</button>
-                                    </Link>
+                                <Link to={`/editTerm/${item._id}`}>
+                                    <button className="glossary-button-update">Update</button>
+                                </Link>
                                     <button onClick={() => handleDeleteTerm(item._id)} className="glossary-button-delete">Delete</button>
-                                </>
-                            )}
-                        </div>
-                    </article>
-                ))}
-            </div>
+                                    </>
+                                )}
+                            </div>
+                        </article>
+                    ))}
+                </div>
             <ToastContainer/>
         </div>
     );

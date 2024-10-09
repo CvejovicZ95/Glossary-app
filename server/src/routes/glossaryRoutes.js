@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllTermsController, addTermController, updateTermController, deleteTermController } from "../controllers/glossaryService.js";
+import { getAllTermsController, addTermController, updateTermController, deleteTermController } from "../controllers/glossaryController.js";
 
 export const glosarryRouter = express.Router()
 
