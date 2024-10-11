@@ -4,24 +4,24 @@ import { registerUser, loginUser, logoutUser } from "../api/userApi";
 
 const validateRegistration = ({ email, username, password }) => {
   if (!email || !username || !password) {
-    toast.error("Please fill in all fields");
+    toast.info("Please fill in all fields");
     return false;
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!emailRegex.test(email)) {
-    toast.error("Invalid email format");
+    toast.info("Invalid email format");
     return false;
   }
 
   if (password.length < 6) {
-    toast.error("Password must be at least 6 characters long");
+    toast.info("Password must be at least 6 characters long");
     return false;
   }
 
   if (username.length < 3) {
-    toast.error("Username must be at least 4 characters long");
+    toast.info("Username must be at least 4 characters long");
     return false;
   }
 
@@ -30,7 +30,7 @@ const validateRegistration = ({ email, username, password }) => {
 
 const validateLogin = ({ username, password }) => {
   if (!username || !password) {
-    toast.error("Please fill in all fields");
+    toast.info("Please fill in all fields");
     return false;
   }
 

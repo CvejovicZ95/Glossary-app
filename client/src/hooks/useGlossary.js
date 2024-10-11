@@ -38,17 +38,17 @@ export const useTerms = () => {
 
   const validateInput = (term, definition) => {
     if (!term || !definition) {
-      toast.error("Term and definition cannot be empty");
+      toast.info("Term and definition cannot be empty");
       return false;
     }
 
     if (term.length < 3) {
-      toast.error("Term must be at least 3 characters long");
+      toast.info("Term must be at least 3 characters long");
       return false;
     }
 
     if (definition.length < 15) {
-      toast.error("Definition must be at least 15 characters long");
+      toast.info("Definition must be at least 15 characters long");
       return false;
     }
 

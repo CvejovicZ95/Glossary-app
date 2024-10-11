@@ -9,7 +9,6 @@ describe("Terms API", () => {
   beforeEach(() => {
     global.fetch = jest.fn();
 
-    // Simuliraj localStorage
     global.localStorage = {
       getItem: jest.fn(),
       setItem: jest.fn(),

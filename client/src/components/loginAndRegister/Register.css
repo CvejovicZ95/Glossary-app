@@ -3,7 +3,7 @@ a {
 }
 
 .register-page-container {
-    background-image: url("../../../assets/images/glosary.jpg"); 
+    background-image: url("../../../assets/images/glossary.jpg"); 
     background-size: cover; 
     height: 100vh;
     display: flex;

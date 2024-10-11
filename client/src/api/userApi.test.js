@@ -2,11 +2,11 @@ import { registerUser, loginUser, logoutUser } from "../api/userApi";
 
 describe("User API", () => {
   beforeEach(() => {
-    global.fetch = jest.fn(); // Mock fetch funkcije
+    global.fetch = jest.fn();
   });
 
   afterEach(() => {
-    jest.resetAllMocks(); // Resetovanje mockova posle svakog testa
+    jest.resetAllMocks();
   });
 
   test("registerUser should return data on successful registration", async () => {
