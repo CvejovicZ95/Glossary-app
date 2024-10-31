@@ -18,7 +18,7 @@ The Glossary App allows users to register and log in to their accounts. Users ca
 
 - **Term Management:**
 
-  - Create Terms: Users can create posts with text, images, or a combination of both.
+  - Create Terms: Users can create terms.
   - Edit/Delete Terms: Users can modify or remove their own terms.
   - Admin:Admin can modify or remove any term.
 
